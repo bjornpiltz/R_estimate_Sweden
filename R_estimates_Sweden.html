@@ -1,0 +1,2863 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Björn Piltz" />
+
+<meta name="date" content="2021-02-04" />
+
+<title>R Estimates for Sweden</title>
+
+<script src="R_estimates_Sweden_files/header-attrs-2.6/header-attrs.js"></script>
+<link href="R_estimates_Sweden_files/tufte-css-2015.12.29/tufte-fonts.css" rel="stylesheet" />
+<link href="R_estimates_Sweden_files/tufte-css-2015.12.29/tufte-background.css" rel="stylesheet" />
+<link href="R_estimates_Sweden_files/tufte-css-2015.12.29/tufte-italics.css" rel="stylesheet" />
+<link href="R_estimates_Sweden_files/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+<link href="R_estimates_Sweden_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="R_estimates_Sweden_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">R Estimates for Sweden</h1>
+<h4 class="author">Björn Piltz</h4>
+<h4 class="date">2021-02-04</h4>
+
+
+<div id="TOC">
+<ul>
+<li><a href="#sverige">Sverige</a></li>
+<li><a href="#blekinge">Blekinge</a></li>
+<li><a href="#dalarna">Dalarna</a></li>
+<li><a href="#gotland">Gotland</a></li>
+<li><a href="#gävleborg">Gävleborg</a></li>
+<li><a href="#halland">Halland</a></li>
+<li><a href="#jämtland_härjedalen">Jämtland_Härjedalen</a></li>
+<li><a href="#jönköping">Jönköping</a></li>
+<li><a href="#kalmar">Kalmar</a></li>
+<li><a href="#kronoberg">Kronoberg</a></li>
+<li><a href="#norrbotten">Norrbotten</a></li>
+<li><a href="#skåne">Skåne</a></li>
+<li><a href="#stockholm">Stockholm</a></li>
+<li><a href="#sörmland">Sörmland</a></li>
+<li><a href="#uppsala">Uppsala</a></li>
+<li><a href="#värmland">Värmland</a></li>
+<li><a href="#västerbotten">Västerbotten</a></li>
+<li><a href="#västernorrland">Västernorrland</a></li>
+<li><a href="#västmanland">Västmanland</a></li>
+<li><a href="#västra_götaland">Västra_Götaland</a></li>
+<li><a href="#örebro">Örebro</a></li>
+<li><a href="#östergötland">Östergötland</a></li>
+</ul>
+</div>
+
+<p>This page was automatically generated and plots R estimates based on the raw Swedish case data. It uses a similar methodology as the official FHM estimates <a href="https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/statistik-och-analyser/analys-och-prognoser/">Regioner: Skattning av det momentana reproduktionstalet</a>, but it doesn’t differentiate between imported and domestic cases.</p>
+<p>Also beware that the last couple of days might be incomplete.</p>
+<div id="sverige" class="section level2">
+<h2>Sverige</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Sverige - Incidence
+</p>
+<img src="Figs/unnamed-chunk-1-1.png" alt="Sverige - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Sverige - R
+</p>
+<img src="Figs/unnamed-chunk-2-1.png" alt="Sverige - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Sverige - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.78</td>
+<td align="right">0.77</td>
+<td align="right">0.79</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.77</td>
+<td align="right">0.76</td>
+<td align="right">0.78</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.79</td>
+<td align="right">0.78</td>
+<td align="right">0.80</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.81</td>
+<td align="right">0.80</td>
+<td align="right">0.83</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.86</td>
+<td align="right">0.85</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.90</td>
+<td align="right">0.89</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.92</td>
+<td align="right">0.91</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.92</td>
+<td align="right">0.91</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.91</td>
+<td align="right">0.89</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.84</td>
+<td align="right">0.83</td>
+<td align="right">0.85</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.88</td>
+<td align="right">0.87</td>
+<td align="right">0.90</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.92</td>
+<td align="right">0.91</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.95</td>
+<td align="right">0.94</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.95</td>
+<td align="right">0.94</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.97</td>
+<td align="right">0.96</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.97</td>
+<td align="right">0.95</td>
+<td align="right">0.98</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="blekinge" class="section level2">
+<h2>Blekinge</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Blekinge - Incidence
+</p>
+<img src="Figs/unnamed-chunk-4-1.png" alt="Blekinge - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Blekinge - R
+</p>
+<img src="Figs/unnamed-chunk-5-1.png" alt="Blekinge - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Blekinge - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.76</td>
+<td align="right">0.70</td>
+<td align="right">0.83</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.72</td>
+<td align="right">0.65</td>
+<td align="right">0.78</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.68</td>
+<td align="right">0.62</td>
+<td align="right">0.75</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.70</td>
+<td align="right">0.63</td>
+<td align="right">0.77</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.67</td>
+<td align="right">0.60</td>
+<td align="right">0.74</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.73</td>
+<td align="right">0.65</td>
+<td align="right">0.80</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.77</td>
+<td align="right">0.70</td>
+<td align="right">0.85</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.64</td>
+<td align="right">0.57</td>
+<td align="right">0.72</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.63</td>
+<td align="right">0.55</td>
+<td align="right">0.70</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.65</td>
+<td align="right">0.58</td>
+<td align="right">0.73</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.64</td>
+<td align="right">0.56</td>
+<td align="right">0.73</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.67</td>
+<td align="right">0.59</td>
+<td align="right">0.76</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.71</td>
+<td align="right">0.62</td>
+<td align="right">0.81</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.78</td>
+<td align="right">0.68</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.91</td>
+<td align="right">0.80</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.92</td>
+<td align="right">0.80</td>
+<td align="right">1.04</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="dalarna" class="section level2">
+<h2>Dalarna</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Dalarna - Incidence
+</p>
+<img src="Figs/unnamed-chunk-7-1.png" alt="Dalarna - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Dalarna - R
+</p>
+<img src="Figs/unnamed-chunk-8-1.png" alt="Dalarna - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Dalarna - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.90</td>
+<td align="right">0.83</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.90</td>
+<td align="right">0.83</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.89</td>
+<td align="right">0.82</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.84</td>
+<td align="right">0.77</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.84</td>
+<td align="right">0.77</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.88</td>
+<td align="right">0.80</td>
+<td align="right">0.95</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.88</td>
+<td align="right">0.80</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.83</td>
+<td align="right">0.76</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.78</td>
+<td align="right">0.71</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.73</td>
+<td align="right">0.66</td>
+<td align="right">0.81</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.75</td>
+<td align="right">0.67</td>
+<td align="right">0.82</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.76</td>
+<td align="right">0.68</td>
+<td align="right">0.84</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.78</td>
+<td align="right">0.70</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.83</td>
+<td align="right">0.74</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.81</td>
+<td align="right">0.72</td>
+<td align="right">0.90</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.83</td>
+<td align="right">0.74</td>
+<td align="right">0.93</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="gotland" class="section level2">
+<h2>Gotland</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Gotland - Incidence
+</p>
+<img src="Figs/unnamed-chunk-10-1.png" alt="Gotland - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Gotland - R
+</p>
+<img src="Figs/unnamed-chunk-11-1.png" alt="Gotland - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Gotland - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.69</td>
+<td align="right">0.54</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.72</td>
+<td align="right">0.56</td>
+<td align="right">0.90</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.65</td>
+<td align="right">0.50</td>
+<td align="right">0.83</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.63</td>
+<td align="right">0.48</td>
+<td align="right">0.81</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.72</td>
+<td align="right">0.55</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.79</td>
+<td align="right">0.60</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.82</td>
+<td align="right">0.62</td>
+<td align="right">1.05</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.83</td>
+<td align="right">0.62</td>
+<td align="right">1.06</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.82</td>
+<td align="right">0.61</td>
+<td align="right">1.06</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.73</td>
+<td align="right">0.53</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.70</td>
+<td align="right">0.49</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.62</td>
+<td align="right">0.43</td>
+<td align="right">0.85</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.65</td>
+<td align="right">0.44</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.70</td>
+<td align="right">0.48</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.65</td>
+<td align="right">0.43</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.63</td>
+<td align="right">0.40</td>
+<td align="right">0.91</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="gävleborg" class="section level2">
+<h2>Gävleborg</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Gävleborg - Incidence
+</p>
+<img src="Figs/unnamed-chunk-13-1.png" alt="Gävleborg - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Gävleborg - R
+</p>
+<img src="Figs/unnamed-chunk-14-1.png" alt="Gävleborg - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Gävleborg - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.71</td>
+<td align="right">0.66</td>
+<td align="right">0.77</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.78</td>
+<td align="right">0.72</td>
+<td align="right">0.84</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.72</td>
+<td align="right">0.66</td>
+<td align="right">0.79</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.78</td>
+<td align="right">0.71</td>
+<td align="right">0.85</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.86</td>
+<td align="right">0.79</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.84</td>
+<td align="right">0.77</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.86</td>
+<td align="right">0.79</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.92</td>
+<td align="right">0.84</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.74</td>
+<td align="right">0.66</td>
+<td align="right">0.81</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.63</td>
+<td align="right">0.57</td>
+<td align="right">0.70</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.65</td>
+<td align="right">0.59</td>
+<td align="right">0.73</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.87</td>
+<td align="right">0.79</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">1.00</td>
+<td align="right">0.91</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">1.08</td>
+<td align="right">0.98</td>
+<td align="right">1.18</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.89</td>
+<td align="right">0.80</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">1.24</td>
+<td align="right">1.14</td>
+<td align="right">1.35</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="halland" class="section level2">
+<h2>Halland</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Halland - Incidence
+</p>
+<img src="Figs/unnamed-chunk-16-1.png" alt="Halland - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Halland - R
+</p>
+<img src="Figs/unnamed-chunk-17-1.png" alt="Halland - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Halland - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.76</td>
+<td align="right">0.72</td>
+<td align="right">0.80</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.76</td>
+<td align="right">0.71</td>
+<td align="right">0.80</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.79</td>
+<td align="right">0.74</td>
+<td align="right">0.83</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.82</td>
+<td align="right">0.77</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.87</td>
+<td align="right">0.82</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.91</td>
+<td align="right">0.86</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.97</td>
+<td align="right">0.91</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.93</td>
+<td align="right">0.87</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">1.00</td>
+<td align="right">0.94</td>
+<td align="right">1.06</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.93</td>
+<td align="right">0.87</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.99</td>
+<td align="right">0.93</td>
+<td align="right">1.05</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.97</td>
+<td align="right">0.92</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.99</td>
+<td align="right">0.93</td>
+<td align="right">1.04</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.94</td>
+<td align="right">0.88</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">1.02</td>
+<td align="right">0.96</td>
+<td align="right">1.08</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.96</td>
+<td align="right">0.90</td>
+<td align="right">1.02</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="jämtland_härjedalen" class="section level2">
+<h2>Jämtland_Härjedalen</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Jämtland_Härjedalen - Incidence
+</p>
+<img src="Figs/unnamed-chunk-19-1.png" alt="Jämtland_Härjedalen - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Jämtland_Härjedalen - R
+</p>
+<img src="Figs/unnamed-chunk-20-1.png" alt="Jämtland_Härjedalen - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Jämtland_Härjedalen - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.76</td>
+<td align="right">0.67</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.81</td>
+<td align="right">0.72</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.85</td>
+<td align="right">0.74</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.86</td>
+<td align="right">0.76</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.90</td>
+<td align="right">0.79</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.97</td>
+<td align="right">0.85</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">1.02</td>
+<td align="right">0.90</td>
+<td align="right">1.15</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.90</td>
+<td align="right">0.79</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.81</td>
+<td align="right">0.70</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.86</td>
+<td align="right">0.74</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.92</td>
+<td align="right">0.81</td>
+<td align="right">1.05</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.96</td>
+<td align="right">0.84</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.97</td>
+<td align="right">0.84</td>
+<td align="right">1.10</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.99</td>
+<td align="right">0.86</td>
+<td align="right">1.12</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">1.10</td>
+<td align="right">0.96</td>
+<td align="right">1.24</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">1.12</td>
+<td align="right">0.98</td>
+<td align="right">1.27</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="jönköping" class="section level2">
+<h2>Jönköping</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Jönköping - Incidence
+</p>
+<img src="Figs/unnamed-chunk-22-1.png" alt="Jönköping - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Jönköping - R
+</p>
+<img src="Figs/unnamed-chunk-23-1.png" alt="Jönköping - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Jönköping - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.87</td>
+<td align="right">0.82</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.89</td>
+<td align="right">0.84</td>
+<td align="right">0.95</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.93</td>
+<td align="right">0.88</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.93</td>
+<td align="right">0.88</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.97</td>
+<td align="right">0.91</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.98</td>
+<td align="right">0.92</td>
+<td align="right">1.04</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.98</td>
+<td align="right">0.92</td>
+<td align="right">1.04</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">1.00</td>
+<td align="right">0.94</td>
+<td align="right">1.07</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">1.04</td>
+<td align="right">0.98</td>
+<td align="right">1.10</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">1.03</td>
+<td align="right">0.97</td>
+<td align="right">1.10</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">1.05</td>
+<td align="right">0.99</td>
+<td align="right">1.12</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">1.01</td>
+<td align="right">0.95</td>
+<td align="right">1.07</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">1.00</td>
+<td align="right">0.94</td>
+<td align="right">1.06</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.99</td>
+<td align="right">0.93</td>
+<td align="right">1.05</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.98</td>
+<td align="right">0.92</td>
+<td align="right">1.04</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.93</td>
+<td align="right">0.87</td>
+<td align="right">0.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="kalmar" class="section level2">
+<h2>Kalmar</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Kalmar - Incidence
+</p>
+<img src="Figs/unnamed-chunk-25-1.png" alt="Kalmar - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Kalmar - R
+</p>
+<img src="Figs/unnamed-chunk-26-1.png" alt="Kalmar - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Kalmar - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.74</td>
+<td align="right">0.69</td>
+<td align="right">0.80</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.81</td>
+<td align="right">0.75</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.81</td>
+<td align="right">0.74</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.82</td>
+<td align="right">0.75</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.90</td>
+<td align="right">0.83</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.86</td>
+<td align="right">0.79</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.93</td>
+<td align="right">0.85</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.84</td>
+<td align="right">0.77</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.82</td>
+<td align="right">0.75</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.72</td>
+<td align="right">0.66</td>
+<td align="right">0.79</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.76</td>
+<td align="right">0.69</td>
+<td align="right">0.83</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.76</td>
+<td align="right">0.69</td>
+<td align="right">0.84</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.85</td>
+<td align="right">0.77</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.83</td>
+<td align="right">0.75</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.99</td>
+<td align="right">0.90</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.92</td>
+<td align="right">0.83</td>
+<td align="right">1.01</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="kronoberg" class="section level2">
+<h2>Kronoberg</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Kronoberg - Incidence
+</p>
+<img src="Figs/unnamed-chunk-28-1.png" alt="Kronoberg - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Kronoberg - R
+</p>
+<img src="Figs/unnamed-chunk-29-1.png" alt="Kronoberg - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Kronoberg - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.83</td>
+<td align="right">0.77</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.79</td>
+<td align="right">0.73</td>
+<td align="right">0.85</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.83</td>
+<td align="right">0.77</td>
+<td align="right">0.90</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.91</td>
+<td align="right">0.84</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.94</td>
+<td align="right">0.87</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.97</td>
+<td align="right">0.90</td>
+<td align="right">1.05</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">1.00</td>
+<td align="right">0.92</td>
+<td align="right">1.08</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">1.00</td>
+<td align="right">0.92</td>
+<td align="right">1.08</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">1.05</td>
+<td align="right">0.97</td>
+<td align="right">1.13</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">1.06</td>
+<td align="right">0.98</td>
+<td align="right">1.14</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">1.01</td>
+<td align="right">0.93</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.95</td>
+<td align="right">0.88</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.94</td>
+<td align="right">0.87</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.93</td>
+<td align="right">0.85</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.85</td>
+<td align="right">0.78</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.86</td>
+<td align="right">0.79</td>
+<td align="right">0.94</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="norrbotten" class="section level2">
+<h2>Norrbotten</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Norrbotten - Incidence
+</p>
+<img src="Figs/unnamed-chunk-31-1.png" alt="Norrbotten - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Norrbotten - R
+</p>
+<img src="Figs/unnamed-chunk-32-1.png" alt="Norrbotten - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Norrbotten - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.90</td>
+<td align="right">0.82</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.88</td>
+<td align="right">0.81</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.94</td>
+<td align="right">0.87</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">1.01</td>
+<td align="right">0.93</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.94</td>
+<td align="right">0.87</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.96</td>
+<td align="right">0.89</td>
+<td align="right">1.04</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.91</td>
+<td align="right">0.83</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.95</td>
+<td align="right">0.88</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.92</td>
+<td align="right">0.85</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.85</td>
+<td align="right">0.77</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.82</td>
+<td align="right">0.74</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.86</td>
+<td align="right">0.78</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.87</td>
+<td align="right">0.79</td>
+<td align="right">0.95</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.86</td>
+<td align="right">0.78</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.81</td>
+<td align="right">0.74</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.94</td>
+<td align="right">0.85</td>
+<td align="right">1.03</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="skåne" class="section level2">
+<h2>Skåne</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Skåne - Incidence
+</p>
+<img src="Figs/unnamed-chunk-34-1.png" alt="Skåne - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Skåne - R
+</p>
+<img src="Figs/unnamed-chunk-35-1.png" alt="Skåne - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Skåne - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.77</td>
+<td align="right">0.75</td>
+<td align="right">0.79</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.65</td>
+<td align="right">0.63</td>
+<td align="right">0.67</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.70</td>
+<td align="right">0.68</td>
+<td align="right">0.72</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.74</td>
+<td align="right">0.72</td>
+<td align="right">0.76</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.81</td>
+<td align="right">0.79</td>
+<td align="right">0.84</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.87</td>
+<td align="right">0.84</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.89</td>
+<td align="right">0.87</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.84</td>
+<td align="right">0.82</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.85</td>
+<td align="right">0.83</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.74</td>
+<td align="right">0.71</td>
+<td align="right">0.76</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.77</td>
+<td align="right">0.74</td>
+<td align="right">0.79</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.84</td>
+<td align="right">0.82</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.90</td>
+<td align="right">0.87</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.90</td>
+<td align="right">0.88</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.94</td>
+<td align="right">0.91</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.94</td>
+<td align="right">0.91</td>
+<td align="right">0.97</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="stockholm" class="section level2">
+<h2>Stockholm</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Stockholm - Incidence
+</p>
+<img src="Figs/unnamed-chunk-37-1.png" alt="Stockholm - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Stockholm - R
+</p>
+<img src="Figs/unnamed-chunk-38-1.png" alt="Stockholm - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Stockholm - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.79</td>
+<td align="right">0.76</td>
+<td align="right">0.82</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.83</td>
+<td align="right">0.80</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.88</td>
+<td align="right">0.85</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.92</td>
+<td align="right">0.89</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.98</td>
+<td align="right">0.95</td>
+<td align="right">1.01</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.99</td>
+<td align="right">0.96</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.99</td>
+<td align="right">0.96</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">1.03</td>
+<td align="right">0.99</td>
+<td align="right">1.06</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.99</td>
+<td align="right">0.96</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.95</td>
+<td align="right">0.91</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.99</td>
+<td align="right">0.96</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.99</td>
+<td align="right">0.96</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">1.00</td>
+<td align="right">0.97</td>
+<td align="right">1.04</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">1.04</td>
+<td align="right">1.00</td>
+<td align="right">1.07</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.96</td>
+<td align="right">0.93</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.94</td>
+<td align="right">0.91</td>
+<td align="right">0.97</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sörmland" class="section level2">
+<h2>Sörmland</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Sörmland - Incidence
+</p>
+<img src="Figs/unnamed-chunk-40-1.png" alt="Sörmland - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Sörmland - R
+</p>
+<img src="Figs/unnamed-chunk-41-1.png" alt="Sörmland - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Sörmland - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.77</td>
+<td align="right">0.70</td>
+<td align="right">0.84</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.85</td>
+<td align="right">0.78</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.81</td>
+<td align="right">0.74</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.80</td>
+<td align="right">0.73</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.91</td>
+<td align="right">0.83</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.87</td>
+<td align="right">0.79</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.98</td>
+<td align="right">0.89</td>
+<td align="right">1.07</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.96</td>
+<td align="right">0.87</td>
+<td align="right">1.05</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.87</td>
+<td align="right">0.78</td>
+<td align="right">0.95</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.85</td>
+<td align="right">0.77</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.82</td>
+<td align="right">0.74</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.79</td>
+<td align="right">0.71</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.83</td>
+<td align="right">0.74</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.83</td>
+<td align="right">0.74</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.85</td>
+<td align="right">0.76</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.87</td>
+<td align="right">0.78</td>
+<td align="right">0.97</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="uppsala" class="section level2">
+<h2>Uppsala</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Uppsala - Incidence
+</p>
+<img src="Figs/unnamed-chunk-43-1.png" alt="Uppsala - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Uppsala - R
+</p>
+<img src="Figs/unnamed-chunk-44-1.png" alt="Uppsala - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Uppsala - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.72</td>
+<td align="right">0.66</td>
+<td align="right">0.78</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.76</td>
+<td align="right">0.70</td>
+<td align="right">0.82</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.88</td>
+<td align="right">0.81</td>
+<td align="right">0.95</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.89</td>
+<td align="right">0.82</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.99</td>
+<td align="right">0.92</td>
+<td align="right">1.07</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">1.04</td>
+<td align="right">0.96</td>
+<td align="right">1.12</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.93</td>
+<td align="right">0.86</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">1.05</td>
+<td align="right">0.97</td>
+<td align="right">1.13</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">1.04</td>
+<td align="right">0.96</td>
+<td align="right">1.11</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.90</td>
+<td align="right">0.83</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.88</td>
+<td align="right">0.81</td>
+<td align="right">0.95</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.84</td>
+<td align="right">0.78</td>
+<td align="right">0.92</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.87</td>
+<td align="right">0.80</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.94</td>
+<td align="right">0.87</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.93</td>
+<td align="right">0.86</td>
+<td align="right">1.01</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.91</td>
+<td align="right">0.84</td>
+<td align="right">0.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="värmland" class="section level2">
+<h2>Värmland</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Värmland - Incidence
+</p>
+<img src="Figs/unnamed-chunk-46-1.png" alt="Värmland - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Värmland - R
+</p>
+<img src="Figs/unnamed-chunk-47-1.png" alt="Värmland - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Värmland - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.78</td>
+<td align="right">0.70</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.77</td>
+<td align="right">0.69</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.75</td>
+<td align="right">0.66</td>
+<td align="right">0.84</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.79</td>
+<td align="right">0.70</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.81</td>
+<td align="right">0.71</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.87</td>
+<td align="right">0.77</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.89</td>
+<td align="right">0.78</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">1.00</td>
+<td align="right">0.89</td>
+<td align="right">1.12</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">1.09</td>
+<td align="right">0.97</td>
+<td align="right">1.21</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">1.12</td>
+<td align="right">0.99</td>
+<td align="right">1.24</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">1.12</td>
+<td align="right">1.00</td>
+<td align="right">1.25</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">1.09</td>
+<td align="right">0.97</td>
+<td align="right">1.21</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">1.07</td>
+<td align="right">0.95</td>
+<td align="right">1.19</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">1.04</td>
+<td align="right">0.93</td>
+<td align="right">1.16</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">1.05</td>
+<td align="right">0.94</td>
+<td align="right">1.17</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.98</td>
+<td align="right">0.87</td>
+<td align="right">1.10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="västerbotten" class="section level2">
+<h2>Västerbotten</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Västerbotten - Incidence
+</p>
+<img src="Figs/unnamed-chunk-49-1.png" alt="Västerbotten - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Västerbotten - R
+</p>
+<img src="Figs/unnamed-chunk-50-1.png" alt="Västerbotten - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Västerbotten - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.78</td>
+<td align="right">0.70</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.90</td>
+<td align="right">0.81</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.97</td>
+<td align="right">0.87</td>
+<td align="right">1.06</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.96</td>
+<td align="right">0.87</td>
+<td align="right">1.06</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.99</td>
+<td align="right">0.89</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">1.00</td>
+<td align="right">0.90</td>
+<td align="right">1.10</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">1.02</td>
+<td align="right">0.92</td>
+<td align="right">1.12</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">1.01</td>
+<td align="right">0.92</td>
+<td align="right">1.12</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">1.00</td>
+<td align="right">0.90</td>
+<td align="right">1.10</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">1.01</td>
+<td align="right">0.91</td>
+<td align="right">1.11</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">1.05</td>
+<td align="right">0.95</td>
+<td align="right">1.15</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">1.13</td>
+<td align="right">1.02</td>
+<td align="right">1.23</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">1.12</td>
+<td align="right">1.02</td>
+<td align="right">1.22</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">1.08</td>
+<td align="right">0.98</td>
+<td align="right">1.18</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">1.23</td>
+<td align="right">1.13</td>
+<td align="right">1.34</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">1.40</td>
+<td align="right">1.29</td>
+<td align="right">1.51</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="västernorrland" class="section level2">
+<h2>Västernorrland</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Västernorrland - Incidence
+</p>
+<img src="Figs/unnamed-chunk-52-1.png" alt="Västernorrland - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Västernorrland - R
+</p>
+<img src="Figs/unnamed-chunk-53-1.png" alt="Västernorrland - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Västernorrland - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.82</td>
+<td align="right">0.75</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.89</td>
+<td align="right">0.82</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.91</td>
+<td align="right">0.84</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.86</td>
+<td align="right">0.79</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.85</td>
+<td align="right">0.78</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.88</td>
+<td align="right">0.81</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.91</td>
+<td align="right">0.83</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.88</td>
+<td align="right">0.80</td>
+<td align="right">0.96</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.91</td>
+<td align="right">0.83</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.89</td>
+<td align="right">0.81</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.97</td>
+<td align="right">0.88</td>
+<td align="right">1.05</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.99</td>
+<td align="right">0.90</td>
+<td align="right">1.07</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">1.02</td>
+<td align="right">0.94</td>
+<td align="right">1.12</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">1.02</td>
+<td align="right">0.94</td>
+<td align="right">1.11</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">1.08</td>
+<td align="right">1.00</td>
+<td align="right">1.18</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">1.05</td>
+<td align="right">0.96</td>
+<td align="right">1.14</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="västmanland" class="section level2">
+<h2>Västmanland</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Västmanland - Incidence
+</p>
+<img src="Figs/unnamed-chunk-55-1.png" alt="Västmanland - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Västmanland - R
+</p>
+<img src="Figs/unnamed-chunk-56-1.png" alt="Västmanland - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Västmanland - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.75</td>
+<td align="right">0.69</td>
+<td align="right">0.81</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.82</td>
+<td align="right">0.75</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.74</td>
+<td align="right">0.68</td>
+<td align="right">0.81</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.82</td>
+<td align="right">0.75</td>
+<td align="right">0.90</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.90</td>
+<td align="right">0.82</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.95</td>
+<td align="right">0.87</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.99</td>
+<td align="right">0.91</td>
+<td align="right">1.08</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.90</td>
+<td align="right">0.82</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.85</td>
+<td align="right">0.77</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.85</td>
+<td align="right">0.77</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.69</td>
+<td align="right">0.62</td>
+<td align="right">0.76</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.85</td>
+<td align="right">0.77</td>
+<td align="right">0.93</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.90</td>
+<td align="right">0.81</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.92</td>
+<td align="right">0.84</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.95</td>
+<td align="right">0.86</td>
+<td align="right">1.05</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.99</td>
+<td align="right">0.90</td>
+<td align="right">1.09</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="västra_götaland" class="section level2">
+<h2>Västra_Götaland</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Västra_Götaland - Incidence
+</p>
+<img src="Figs/unnamed-chunk-58-1.png" alt="Västra_Götaland - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Västra_Götaland - R
+</p>
+<img src="Figs/unnamed-chunk-59-1.png" alt="Västra_Götaland - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Västra_Götaland - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.75</td>
+<td align="right">0.73</td>
+<td align="right">0.77</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.77</td>
+<td align="right">0.75</td>
+<td align="right">0.79</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.75</td>
+<td align="right">0.73</td>
+<td align="right">0.77</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.75</td>
+<td align="right">0.73</td>
+<td align="right">0.78</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.78</td>
+<td align="right">0.76</td>
+<td align="right">0.81</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.84</td>
+<td align="right">0.81</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.91</td>
+<td align="right">0.88</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.97</td>
+<td align="right">0.94</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.92</td>
+<td align="right">0.89</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.84</td>
+<td align="right">0.81</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.95</td>
+<td align="right">0.92</td>
+<td align="right">0.98</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">1.00</td>
+<td align="right">0.97</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.99</td>
+<td align="right">0.96</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.99</td>
+<td align="right">0.96</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">1.07</td>
+<td align="right">1.04</td>
+<td align="right">1.10</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">1.01</td>
+<td align="right">0.98</td>
+<td align="right">1.04</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="örebro" class="section level2">
+<h2>Örebro</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Örebro - Incidence
+</p>
+<img src="Figs/unnamed-chunk-61-1.png" alt="Örebro - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Örebro - R
+</p>
+<img src="Figs/unnamed-chunk-62-1.png" alt="Örebro - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Örebro - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.82</td>
+<td align="right">0.76</td>
+<td align="right">0.89</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.84</td>
+<td align="right">0.77</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.89</td>
+<td align="right">0.82</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.96</td>
+<td align="right">0.88</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">1.02</td>
+<td align="right">0.94</td>
+<td align="right">1.10</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">1.00</td>
+<td align="right">0.92</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.99</td>
+<td align="right">0.91</td>
+<td align="right">1.07</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.95</td>
+<td align="right">0.87</td>
+<td align="right">1.03</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.83</td>
+<td align="right">0.76</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.78</td>
+<td align="right">0.71</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.80</td>
+<td align="right">0.73</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.76</td>
+<td align="right">0.69</td>
+<td align="right">0.84</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">0.83</td>
+<td align="right">0.75</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.83</td>
+<td align="right">0.75</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.82</td>
+<td align="right">0.74</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.92</td>
+<td align="right">0.83</td>
+<td align="right">1.01</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="östergötland" class="section level2">
+<h2>Östergötland</h2>
+<div class="figure">
+<p class="caption marginnote shownote">
+Östergötland - Incidence
+</p>
+<img src="Figs/unnamed-chunk-64-1.png" alt="Östergötland - Incidence" width="768"  />
+</div>
+<div class="figure">
+<p class="caption marginnote shownote">
+Östergötland - R
+</p>
+<img src="Figs/unnamed-chunk-65-1.png" alt="Östergötland - R" width="768"  />
+</div>
+<p><!--
+<caption>--><span class="marginnote shownote">Östergötland - R table</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Mean</th>
+<th align="right">2.5%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2021-01-19</td>
+<td align="right">0.89</td>
+<td align="right">0.84</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-20</td>
+<td align="right">0.82</td>
+<td align="right">0.78</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-21</td>
+<td align="right">0.81</td>
+<td align="right">0.77</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-22</td>
+<td align="right">0.82</td>
+<td align="right">0.78</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-23</td>
+<td align="right">0.85</td>
+<td align="right">0.81</td>
+<td align="right">0.90</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-24</td>
+<td align="right">0.88</td>
+<td align="right">0.83</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-25</td>
+<td align="right">0.80</td>
+<td align="right">0.75</td>
+<td align="right">0.85</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-26</td>
+<td align="right">0.81</td>
+<td align="right">0.76</td>
+<td align="right">0.86</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-27</td>
+<td align="right">0.79</td>
+<td align="right">0.74</td>
+<td align="right">0.85</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-28</td>
+<td align="right">0.79</td>
+<td align="right">0.74</td>
+<td align="right">0.85</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-29</td>
+<td align="right">0.83</td>
+<td align="right">0.78</td>
+<td align="right">0.88</td>
+</tr>
+<tr class="even">
+<td align="left">2021-01-30</td>
+<td align="right">0.93</td>
+<td align="right">0.88</td>
+<td align="right">0.99</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-01-31</td>
+<td align="right">1.02</td>
+<td align="right">0.96</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-01</td>
+<td align="right">0.94</td>
+<td align="right">0.88</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="odd">
+<td align="left">2021-02-02</td>
+<td align="right">0.91</td>
+<td align="right">0.85</td>
+<td align="right">0.97</td>
+</tr>
+<tr class="even">
+<td align="left">2021-02-03</td>
+<td align="right">0.91</td>
+<td align="right">0.85</td>
+<td align="right">0.97</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

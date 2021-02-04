@@ -1,0 +1,564 @@
+---
+title: "R Estimates for Sweden"
+author: "Björn Piltz"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html:
+    number_sections: no
+    toc: yes
+    fig_height: 6
+    self_contained: no
+  tufte::tufte_handout:
+    number_sections: no
+    toc: yes
+    fig_height: 3.5
+    extra_dependencies: ["float"]
+always_allow_html: yes
+---
+
+```{r setup1, include=FALSE}
+#suppress the warnings and other messages from showing in the knitted file.
+knitr::opts_chunk$set(fig.width=8, fig.height=6, fig.path='Figs/',
+                      echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+This page was automatically generated and plots R estimates based on the raw Swedish case data.
+It uses a similar methodology as the official FHM estimates [Regioner: Skattning av det momentana reproduktionstalet](https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/statistik-och-analyser/analys-och-prognoser/), but it doesn't differentiate between imported and domestic cases.
+
+Also beware that the last couple of days might be incomplete.
+
+```{r setup, include=FALSE}
+library(readxl)
+library(tidyverse)
+library(dplyr)
+library(EpiEstim)
+library(knitr)
+library(plotly)
+library(zoo)
+
+our_theme <- theme_minimal() + 
+  theme(plot.background = element_rect(fill = "#fffff8"),
+        panel.background = element_rect(fill = "#fffff8"))
+
+download.file("https://www.arcgis.com/sharing/rest/content/items/b5e7488e117749c19881cce45db13f7e/data", "Folkhalsomyndigheten_Covid19.xlsx")
+
+# Välj en av nedanstående:
+# Sverige, Blekinge, Dalarna, Gotland, Gävleborg, Halland, 
+# Jämtland_Härjedalen, Jönköping, Kalmar, Kronoberg, Norrbotten, Skåne, 
+# Stockholm, Sörmland, Uppsala, Värmland, Västerbotten, Västernorrland, 
+# Västmanland, Västra_Götaland, Örebro, Östergötland
+region <- "Västerbotten"
+
+df <- read_excel("Folkhalsomyndigheten_Covid19.xlsx")%>%
+  rename(dates = Statistikdatum, Sverige = Totalt_antal_fall)
+df$dates = as.Date(df$dates)
+
+df%>%
+  filter(dates > "2020-07-01") -> df
+
+plot_I <- function(R_weekly){
+    
+  R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+  g <- plot(R_weekly, "incid", options_I  = list(transp = 0.3, xlim = c(as.Date("2020-08-03"), NA)))+
+    ggtitle("") +
+    geom_line(aes(x = dates , y = rollmean(counts, 7, na.pad = TRUE, align = "right"))) +
+    our_theme
+  return(g)
+}
+
+plot_R <- function(R_weekly){
+    
+  g <- plot(R_weekly, 
+            "R", 
+            options_R = list(#ylim = c(0, 8), 
+                             xlim = c(as.Date("2020-08-03"), NA))) +
+    ggtitle("") +
+    our_theme + 
+    theme(legend.title = element_blank(), legend.position = "none")
+  return(g)
+}
+```
+
+## Sverige
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Sverige - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Sverige"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Sverige - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Sverige - R table"))
+```
+
+
+## Blekinge
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Blekinge - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Blekinge"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Blekinge - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Blekinge - R table"))
+```
+
+
+## Dalarna
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Dalarna - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Dalarna"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Dalarna - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Dalarna - R table"))
+```
+
+
+## Gotland
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Gotland - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Gotland"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Gotland - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Gotland - R table"))
+```
+
+
+## Gävleborg
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Gävleborg - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Gävleborg"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Gävleborg - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Gävleborg - R table"))
+```
+
+
+## Halland
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Halland - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Halland"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Halland - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Halland - R table"))
+```
+
+
+## Jämtland_Härjedalen
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Jämtland_Härjedalen - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Jämtland_Härjedalen"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Jämtland_Härjedalen - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Jämtland_Härjedalen - R table"))
+```
+
+
+## Jönköping
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Jönköping - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Jönköping"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Jönköping - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Jönköping - R table"))
+```
+
+
+## Kalmar
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Kalmar - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Kalmar"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Kalmar - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Kalmar - R table"))
+```
+
+
+## Kronoberg
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Kronoberg - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Kronoberg"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Kronoberg - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Kronoberg - R table"))
+```
+
+
+## Norrbotten
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Norrbotten - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Norrbotten"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Norrbotten - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Norrbotten - R table"))
+```
+
+
+## Skåne
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Skåne - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Skåne"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Skåne - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Skåne - R table"))
+```
+
+
+## Stockholm
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Stockholm - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Stockholm"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Stockholm - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Stockholm - R table"))
+```
+
+
+## Sörmland
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Sörmland - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Sörmland"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Sörmland - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Sörmland - R table"))
+```
+
+
+## Uppsala
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Uppsala - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Uppsala"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Uppsala - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Uppsala - R table"))
+```
+
+
+## Värmland
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Värmland - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Värmland"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Värmland - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Värmland - R table"))
+```
+
+
+## Västerbotten
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Västerbotten - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Västerbotten"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Västerbotten - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Västerbotten - R table"))
+```
+
+
+## Västernorrland
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Västernorrland - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Västernorrland"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Västernorrland - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Västernorrland - R table"))
+```
+
+
+## Västmanland
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Västmanland - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Västmanland"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Västmanland - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Västmanland - R table"))
+```
+
+
+## Västra_Götaland
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Västra_Götaland - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Västra_Götaland"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Västra_Götaland - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Västra_Götaland - R table"))
+```
+
+
+## Örebro
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Örebro - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Örebro"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Örebro - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Örebro - R table"))
+```
+
+
+## Östergötland
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Östergötland - Incidence"), echo = FALSE, message = FALSE, warning = FALSE}
+df$I = df[["Östergötland"]]
+R_weekly <- estimate_R(df, "parametric_si", config = make_config(mean_si = 4.8, std_si = 2.3))
+plot_I(R_weekly)
+```
+
+```{r fig.width = 8, fig.height = 4, fig.cap = paste("Östergötland - R") , echo = FALSE, message = FALSE, warning = FALSE}
+plot_R(R_weekly)
+```
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+tmp <- R_weekly$R
+tmp$dates <- R_weekly$dates[c(8:length(R_weekly$dates))]
+tmp2 = tmp[(nrow(tmp)-15):nrow(tmp), c(12, 3, 5, 11)]
+colnames(tmp2) <- c("Date", "Mean", "2.5%", "97.5%")
+rownames(tmp2) <- NULL
+kable(tmp2, digits = 2, caption = paste("Östergötland - R table"))
+```
+
