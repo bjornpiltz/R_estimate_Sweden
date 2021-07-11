@@ -1,0 +1,41 @@
+name: render-markdown
+
+# Controls when the action will run. 
+on:
+  push:
+    paths:
+      - '**.Rmd'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+
+      - name: Install pandoc
+        run: |
+          brew install pandoc
+      - name: Cache Renv packages
+        uses: actions/cache@v2
+        with:
+          path: $HOME/.local/share/renv
+          key: r-${{ hashFiles('renv.lock') }}
+          restore-keys: r-
+
+      - name: Install packages
+        run: |
+          R -e 'install.packages("renv")'
+          R -e 'renv::restore()'
+      - name: Render Rmarkdown files
+        run: |
+          Rscript -e 'rmarkdown::render("R_estimates_Sweden.Rmd")'
